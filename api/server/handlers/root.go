@@ -1,11 +1,17 @@
 package handlers
 
 import (
+	"Hackathon/api/server/data"
+	"Hackathon/api/tools"
 	"net/http"
-	"text/template"
 )
 
 func Root(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("./templates/html/index.html")) //We link the template and the html file
-	tmpl.Execute(w, nil)
+	w.Header().Set("Content-Type", "application/json")
+	Response := data.Response{
+		Status: "ok",
+		Code:   "200",
+		Data:   map[string][]string{"endpoints": {"/connection"}},
+	}
+	tools.Response(w, Response)
 }

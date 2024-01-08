@@ -42,8 +42,21 @@ func CreateDB() {
 			fmt.Println("Error executing query:", err)
 			return
 		}
+		// Read SQL query from a file
+		queryFile = "data/query/insert.sql"
+		queryBytes, err = ioutil.ReadFile(queryFile)
+		if err != nil {
+			fmt.Println("Error reading query file:", err)
+			return
+		}
+		query = string(queryBytes)
 
-		fmt.Println("Table created successfully!")
+		// Execute the SQL query to create a table
+		_, err = db.Exec(query)
+		if err != nil {
+			fmt.Println("Error executing query:", err)
+			return
+		}
 	}
 
 }
