@@ -10,20 +10,20 @@ func StartApi() {
 	//404
 	http.HandleFunc("/", handlers.Error404) //GET
 	//doc
-	http.HandleFunc("/api", handlers.Doc) //GET
+	http.Handle("/api", http.HandlerFunc(handlers.Doc)) //GET
 	//Accounts
-	http.HandleFunc("/connection", handlers.ConnectionHandler) //GET
-	http.HandleFunc("/accountininfo", handlers.GetAccountInfo) //GET
+	http.Handle("/connection", handlers.Authorization(http.HandlerFunc(handlers.ConnectionHandler))) //GET
+	http.Handle("/accountininfo", handlers.Authorization(http.HandlerFunc(handlers.GetAccountInfo))) //GET
 	//Inventory
-	http.HandleFunc("/getInventory", handlers.GetInventory) //GET
-	http.HandleFunc("/addInventory", handlers.AddInventory) //POST
+	http.Handle("/getInventory", handlers.Authorization(http.HandlerFunc(handlers.GetInventory))) //GET
+	http.Handle("/addInventory", handlers.Authorization(http.HandlerFunc(handlers.AddInventory))) //POST
 	//Products
-	http.HandleFunc("/getProducts", handlers.GetProducts)     //GET
-	http.HandleFunc("/getProduct", handlers.GetProduct)       //GET
-	http.HandleFunc("/addProduct", handlers.AddProduct)       //POST
-	http.HandleFunc("/deleteProduct", handlers.DeleteProduct) //DELETE
+	http.Handle("/getProducts", handlers.Authorization(http.HandlerFunc(handlers.GetProducts)))     //GET
+	http.Handle("/getProduct", handlers.Authorization(http.HandlerFunc(handlers.GetProduct)))       //GET
+	http.Handle("/addProduct", handlers.Authorization(http.HandlerFunc(handlers.AddProduct)))       //POST
+	http.Handle("/deleteProduct", handlers.Authorization(http.HandlerFunc(handlers.DeleteProduct))) //DELETE
 	//Bde
-	http.HandleFunc("/getBde", handlers.GetBde) //GET
+	http.Handle("/getBde", handlers.Authorization(http.HandlerFunc(handlers.GetBde))) //GET
 
 	Port := "8080"                                    //We choose our port
 	fmt.Println("api started on port " + Port + " 🚀") //We print this when the server is online

@@ -53,13 +53,36 @@ func WriteErr(ToWrite string) {
 }
 
 func PrintLog() {
+	colorReset := "\033[0m"
+	colorRed := "\033[31m"
 	file, err := os.Open("./data/log.txt")
 	if err != nil {
 		WriteErr("Error opening log file tools/Log.go l58")
 	}
 	scanner := bufio.NewScanner(file) //We take make a array with all the lines of the DB
 	for scanner.Scan() {              //We explore the scanner
-		fmt.Println(scanner.Text())
+		text := scanner.Text() //We explore the scanner
+		if text[0] == 'e' {
+			fmt.Println(colorRed + text[1:] + colorReset)
+		} else {
+			fmt.Println(text)
+		}
+	}
+}
+
+func PrintErr() {
+	colorReset := "\033[0m"
+	colorRed := "\033[31m"
+	file, err := os.Open("./data/log.txt")
+	if err != nil {
+		WriteErr("Error opening log file tools/Log.go l58")
+	}
+	scanner := bufio.NewScanner(file) //We take make a array with all the lines of the DB
+	for scanner.Scan() {
+		text := scanner.Text() //We explore the scanner
+		if text[0] == 'e' {
+			fmt.Println(colorRed + text[1:] + colorReset)
+		}
 	}
 }
 

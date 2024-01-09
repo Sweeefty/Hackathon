@@ -15,6 +15,8 @@ func main() {
 			tools.CreateLog()
 		} else if os.Args[1] == "p" || os.Args[1] == "P" {
 			tools.PrintLog()
+		} else if os.Args[1] == "e" || os.Args[1] == "E" {
+			tools.Help()
 		} else if os.Args[1] == "h" || os.Args[1] == "H" {
 			tools.Help()
 		} else {
