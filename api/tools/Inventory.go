@@ -2,13 +2,13 @@ package tools
 
 import (
 	"database/sql"
-	"fmt"
 )
 
 func GetInventory(cookie string) interface{} {
 	// open database
 	db, err := sql.Open("sqlite3", "./data/db.sqlite")
 	if err != nil {
+		WriteErr("Error opening database tools/Inventory.go line 11")
 		return "Error opening database"
 	}
 	defer db.Close()
@@ -17,6 +17,7 @@ func GetInventory(cookie string) interface{} {
 	rows, err := db.Query("SELECT id FROM accounts WHERE SessionCookie = ?", cookie)
 	defer rows.Close()
 	if err != nil {
+		WriteErr("Error querying database tools/Inventory.go line 20")
 		return "Error querying database"
 	}
 	var id int
@@ -27,6 +28,7 @@ func GetInventory(cookie string) interface{} {
 	rows, err = db.Query("SELECT products_id FROM inventory WHERE accounts_id = ?", id)
 	defer rows.Close()
 	if err != nil {
+		WriteErr("Error querying database tools/Inventory.go line 31")
 		return "Error querying database"
 	}
 	var inventory []string
@@ -42,7 +44,7 @@ func AddInventory(cookie string, ObjectId string) bool {
 	// open database
 	db, err := sql.Open("sqlite3", "./data/db.sqlite")
 	if err != nil {
-		fmt.Println("Error opening database")
+		WriteErr("Error opening database tools/Inventory.go line 54")
 		return false
 	}
 	defer db.Close()
@@ -51,7 +53,7 @@ func AddInventory(cookie string, ObjectId string) bool {
 	rows, err := db.Query("SELECT id FROM accounts WHERE SessionCookie = ?", cookie)
 	defer rows.Close()
 	if err != nil {
-		fmt.Println("Error querying database")
+		WriteErr("Error querying database tools/Inventory.go line 54")
 		return false
 	}
 	var id int
@@ -59,12 +61,10 @@ func AddInventory(cookie string, ObjectId string) bool {
 		rows.Scan(&id)
 	}
 
-	// Extract inventory from id
-	rows, err = db.Query("INSERT INTO inventory (accounts_id, products_id) VALUES (?,?);", id, ObjectId)
-	defer rows.Close()
+	_, err = db.Exec("INSERT INTO inventory (accounts_id, products_id) VALUES (?, ?)", id, ObjectId)
 	if err != nil {
+		WriteErr("Error inserting into database tools/Inventory.go line 64")
 		return false
-	} else {
-		return true
 	}
+	return true
 }

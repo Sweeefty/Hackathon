@@ -32,5 +32,11 @@ func ConnectionHandler(w http.ResponseWriter, r *http.Request) {
 			}
 			tools.ResponseF(w, Response)
 		}
+	} else {
+		Response := data.Response{
+			Status: "method incorrect",
+			Code:   "400",
+		}
+		tools.ResponseF(w, Response)
 	}
 }
