@@ -1,0 +1,141 @@
+{
+    "endpoints" : [
+        {
+            "name" : "API Documentation",
+            "url" : "http://localhost:8080/api",
+            "method" : "GET"
+        },{
+            "name" : "Connection",
+            "url" : "http://localhost:8080/connection",
+            "method" : "GET",
+            "Parameter(s)" : [
+                {
+                    "name" : "email",
+                    "required" : true,
+                    "comment" : "Email of the user"
+                },
+                {
+                    "name" : "password",
+                    "required" : true,
+                    "comment" : "Password of the user"
+                }
+            ]
+        },
+        {
+            "name" : "Info on a user",
+            "url" : "http://localhost:8080/accountininfo",
+            "method" : "GET",
+            "Parameter(s)" : [
+                {
+                    "name" : "id",
+                    "required" : true,
+                    "comment" : "id of the user"
+                }
+            ]
+        },
+        {
+            "name" : "Get Inventory content of a user",
+            "url" : "http://localhost:8080/getInventory",
+            "method" : "GET",
+            "Parameter(s)" : [
+                {
+                    "name" : "cookie",
+                    "required" : true,
+                    "comment" : "the cookie of the user"
+                }
+            ]
+        },
+        {
+            "name" : "Add an item to the inventory of a user",
+            "url" : "http://localhost:8080/addInventory",
+            "method" : "POST",
+            "Parameter(s)" : [
+                {
+                    "name" : "cookie",
+                    "required" : true,
+                    "comment" : "the cookie of the user"
+                },
+                {
+                    "name" : "ObjectId",
+                    "required" : true,
+                    "comment" : "The id of the object to add"
+                }
+            ]
+        },
+        {
+            "name" : "Get products info",
+            "url" : "http://localhost:8080/getProducts",
+            "method" : "GET",
+            "Parameter(s)" : [
+                {
+                    "name" : "bdeId",
+                    "required" : false,
+                    "comment" : "Show the products of a specific BDE (optional)"
+                }
+            ]
+        },
+        {
+            "name" : "Get product info",
+            "url" : "http://localhost:8080/getProduct",
+            "method" : "GET",
+            "Parameter(s)" : [
+                {
+                    "name" : "id",
+                    "required" : true,
+                    "comment" : "The id of the product"
+                }
+            ]
+        },
+        {
+            "name" : "Add a product",
+            "url" : "http://localhost:8080/addProduct",
+            "method" : "POST",
+            "Parameter(s)" : [
+                {
+                    "name" : "name",
+                    "required" : true,
+                    "comment" : "The name of the product"
+                },{
+                    "name" : "description",
+                    "required" : true,
+                    "comment" : "The description of the product"
+                },{
+                    "name" : "price",
+                    "required" : true,
+                    "comment" : "The price of the product"
+                },{
+                    "name" : "bdeId",
+                    "required" : true,
+                    "comment" : "The id of the BDE that sell/create the product"
+                }
+                
+            ]
+        },
+        {
+            "name" : "Delete a product",
+            "url" : "http://localhost:8080/deleteProduct",
+            "method" : "DELETE",
+            "Parameter(s)" : [
+                {
+                    "name" : "id",
+                    "required" : true,
+                    "comment" : "The id of the product"
+                }
+                
+            ]
+        },
+        {
+            "name" : "Get bde",
+            "url" : "http://localhost:8080/getBde",
+            "method" : "GET",
+            "Parameter(s)" : [
+                {
+                    "name" : "id",
+                    "required" : false,
+                    "comment" : "The id of the BDE (optional)"
+                }
+                
+            ]
+        }
+    ]
+}
