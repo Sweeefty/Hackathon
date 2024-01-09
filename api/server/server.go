@@ -14,8 +14,8 @@ func StartApi() {
 	//Root
 	http.HandleFunc("/", handlers.Root) //GET
 	//Accounts
-	http.HandleFunc("/connection", handlers.ConnectionHandler)    //GET
-	http.HandleFunc("/accountininfo", handlers.ConnectionHandler) //GET
+	http.HandleFunc("/connection", handlers.ConnectionHandler) //GET
+	http.HandleFunc("/accountininfo", handlers.GetAccountInfo) //GET
 	//Inventory
 	http.HandleFunc("/getInventory", handlers.GetInventory) //GET
 	http.HandleFunc("/addInventory", handlers.AddInventory) //POST
@@ -24,6 +24,8 @@ func StartApi() {
 	http.HandleFunc("/getProduct", handlers.GetProduct)       //GET
 	http.HandleFunc("/addProduct", handlers.AddProduct)       //POST
 	http.HandleFunc("/deleteProduct", handlers.DeleteProduct) //DELETE
+	//Bde
+	http.HandleFunc("/getBde", handlers.GetBde) //GET
 
 	Port := "8080"                                    //We choose our port
 	fmt.Println("api started on port " + Port + " 🚀") //We print this when the server is online

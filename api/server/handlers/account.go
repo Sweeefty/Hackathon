@@ -12,13 +12,21 @@ func GetAccountInfo(w http.ResponseWriter, r *http.Request) {
 	// email and password
 	if r.Method == "GET" {
 		id := r.FormValue("id")
-
-		Response := data.Response{
-			Status: "ok",
-			Code:   "200",
-			Data:   id,
+		Account := tools.GetAccountById(id)
+		if Account != false {
+			Response := data.Response{
+				Status: "ok",
+				Code:   "200",
+				Data:   Account,
+			}
+			tools.ResponseF(w, Response)
+		} else {
+			Response := data.Response{
+				Status: "account not found",
+				Code:   "404",
+			}
+			tools.ResponseF(w, Response)
 		}
-		tools.ResponseF(w, Response)
 
 	} else {
 		Response := data.Response{
