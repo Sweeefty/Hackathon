@@ -24,6 +24,8 @@ func main() {
 		tools.WriteLog("Server started")
 		// We create the database if it doesn't exist
 		tools.CreateDB()
+		// We initialize the documentation
+		tools.InitDoc()
 		// We start the API
 		server.StartApi()
 	}

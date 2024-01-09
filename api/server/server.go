@@ -7,12 +7,10 @@ import (
 )
 
 func StartApi() {
-	//Swagger
-	//http.Handle("/swagger/", httpSwagger.Handler(
-	//	httpSwagger.URL("http://localhost:8080/swagger/doc.json"), // This URL should point to your generated Swagger JSON file
-	//))
-	//Root
-	http.HandleFunc("/", handlers.Root) //GET
+	//404
+	http.HandleFunc("/", handlers.Error404) //GET
+	//doc
+	http.HandleFunc("/api", handlers.Doc) //GET
 	//Accounts
 	http.HandleFunc("/connection", handlers.ConnectionHandler) //GET
 	http.HandleFunc("/accountininfo", handlers.GetAccountInfo) //GET

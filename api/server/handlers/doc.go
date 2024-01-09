@@ -6,14 +6,14 @@ import (
 	"net/http"
 )
 
-func Root(w http.ResponseWriter, r *http.Request) {
-	tools.WriteLog("Root called")
+func Doc(w http.ResponseWriter, r *http.Request) {
+	tools.WriteLog("doc called")
 	w.Header().Set("Content-Type", "application/json")
 	if r.Method == "GET" {
 		Response := data.Response{
 			Status: "ok",
 			Code:   "200",
-			Data:   map[string][]string{"endpoints": {"/connection"}},
+			Data:   data.Doc,
 		}
 		tools.ResponseF(w, Response)
 	} else {
