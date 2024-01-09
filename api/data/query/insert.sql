@@ -19,8 +19,9 @@ INSERT INTO bde (name, campus_id) VALUES ('MontcuqBDE', 3);
 INSERT INTO events (name, description, date, price, bde_id) VALUES ('Soirée de fin année', '', '2024-05-23', 10, 1);
 
 -- Insert sample products
-INSERT INTO products (name, description, price) VALUES ('Place WareHouse', 'Une place pour aller au WareHouse pour la prochaine soirée sponsorisé par votre bde', 15);
-INSERT INTO products (name, description, price) VALUES ('Pain au chocolat', 'Pour ceux qui ont laissé leur pc allumé', 1);
+INSERT INTO products (name, description, price , bde_id) VALUES ('Place WareHouse', 'Une place pour aller au WareHouse pour la prochaine soirée sponsorisé par votre bde', 15,1);
+INSERT INTO products (name, description, price , bde_id) VALUES ('Pain au chocolat', 'Pour ceux qui ont laissé leur pc allumé', 1,1);
+INSERT INTO products (name, description, price , bde_id) VALUES ('Pain au chocolat', 'Pour ceux qui ont laissé leur pc allumé', 1,2);
 
 -- Insert sample inventory
 INSERT INTO inventory (accounts_id, products_id) VALUES (1, 1);

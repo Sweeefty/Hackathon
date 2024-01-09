@@ -41,9 +41,11 @@ CREATE TABLE IF NOT EXISTS events (
 -- Create products table
 CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL UNIQUE,
+    name TEXT NOT NULL,
     description TEXT NOT NULL,
-    price INTEGER NOT NULL
+    price INTEGER NOT NULL,
+    bde_id INTEGER NOT NULL,
+    FOREIGN KEY (bde_id) REFERENCES bde(id)
 );
 
 -- Create inventory table
