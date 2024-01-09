@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func Response(w http.ResponseWriter, Response data.Response) {
+func ResponseF(w http.ResponseWriter, Response data.Response) {
 	jsonResp, err := json.Marshal(Response)
 	if err != nil {
 		fmt.Println(err)

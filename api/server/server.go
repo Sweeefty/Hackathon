@@ -15,9 +15,10 @@ func StartApi() {
 	styles := http.FileServer(http.Dir("assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets", styles)) //We link the css with http.Handle
 
-	http.HandleFunc("/", handlers.Root)                        //We create the root page
-	http.HandleFunc("/connection", handlers.ConnectionHandler) //We create the connection page
-	http.HandleFunc("/getInventory", handlers.GetInventory)    //We create the get inventory page
+	http.HandleFunc("/", handlers.Root)                        //We create the root page GET
+	http.HandleFunc("/connection", handlers.ConnectionHandler) //We create the connection page GET
+	http.HandleFunc("/getInventory", handlers.GetInventory)    //We create the get inventory page GET
+	http.HandleFunc("/addInventory", handlers.AddInventory)    //We create the add inventory page POST
 
 	Port := "8080"                                    //We choose our port
 	fmt.Println("api started on port " + Port + " 🚀") //We print this when the server is online

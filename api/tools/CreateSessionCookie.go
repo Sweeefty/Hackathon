@@ -5,14 +5,23 @@ package tools
 import (
 	"crypto/rand"
 	"database/sql"
-	"io"
+	"encoding/base64"
 
 	_ "github.com/mattn/go-sqlite3"
 )
 
+func RandomString(length int) (string, error) {
+	randomBytes := make([]byte, length)
+	_, err := rand.Read(randomBytes)
+	if err != nil {
+		return "", err
+	}
+	randomString := base64.URLEncoding.EncodeToString(randomBytes)
+	return randomString[:length], nil
+}
+
 func CreateSessionCookie(email string) string {
-	randomBytes := make([]byte, 32)
-	io.ReadFull(rand.Reader, randomBytes)
+	random, err := RandomString(30)
 	// We check if the cookie already exists
 	db, err := sql.Open("sqlite3", "./data/db.sqlite")
 	if err != nil {
@@ -20,7 +29,7 @@ func CreateSessionCookie(email string) string {
 	}
 	defer db.Close()
 
-	rows, err := db.Query("SELECT * FROM accounts WHERE SessionCookie = ?", randomBytes)
+	rows, err := db.Query("SELECT * FROM accounts WHERE SessionCookie = ?", random)
 	if err != nil {
 		return "ErrorCheckingCookie"
 	}
@@ -36,10 +45,10 @@ func CreateSessionCookie(email string) string {
 			return "Error updating cookie"
 		}
 		defer stmt.Close()
-		_, err = stmt.Exec(randomBytes, email)
+		_, err = stmt.Exec(random, email)
 		if err != nil {
 			return "Error updating cookie"
 		}
-		return string(randomBytes)
+		return random
 	}
 }

@@ -24,5 +24,6 @@ INSERT INTO products (name, description, price) VALUES ('Pain au chocolat', 'Pou
 
 -- Insert sample inventory
 INSERT INTO inventory (accounts_id, products_id) VALUES (1, 1);
+INSERT INTO inventory (accounts_id, products_id) VALUES (1, 2);
 INSERT INTO inventory (accounts_id, products_id) VALUES (2, 1);
 INSERT INTO inventory (accounts_id, products_id) VALUES (3, 1);

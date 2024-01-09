@@ -7,6 +7,7 @@ import (
 )
 
 func ConnectionHandler(w http.ResponseWriter, r *http.Request) {
+	tools.WriteLog("Connection called")
 	w.Header().Set("Content-Type", "application/json")
 	// email and password
 	if r.Method == "GET" {
@@ -22,14 +23,14 @@ func ConnectionHandler(w http.ResponseWriter, r *http.Request) {
 				Code:   "200",
 				Data:   map[string]string{"cookie": Cookie},
 			}
-			tools.Response(w, Response)
+			tools.ResponseF(w, Response)
 
 		} else {
 			Response := data.Response{
 				Status: "email or password incorrect",
 				Code:   "400",
 			}
-			tools.Response(w, Response)
+			tools.ResponseF(w, Response)
 		}
 	}
 }
