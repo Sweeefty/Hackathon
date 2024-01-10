@@ -6,9 +6,10 @@ export default function Home() {
   return (
     <ChakraProvider>
         <Button className='w-full h-full bg-white'>
-          police
+
         </Button>
       
     </ChakraProvider>
   )
 }
+ 
