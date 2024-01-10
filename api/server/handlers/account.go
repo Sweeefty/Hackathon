@@ -1,46 +1,29 @@
 package handlers
 
 import (
-	"Hackathon/api/server/data"
 	"Hackathon/api/tools"
 	"net/http"
 )
 
 func GetAccountInfo(w http.ResponseWriter, r *http.Request) {
 	tools.WriteLog("Connection called")
-	w.Header().Set("Content-Type", "application/json")
 	// email and password
 	if r.Method == "GET" {
 		cookie := r.FormValue("cookie")
 		if cookie == "" {
-			Response := data.Response{
-				Status: "missing parameter (cookie)",
-				Code:   "400",
-			}
-			tools.ResponseF(w, Response)
+			tools.ResponseF(w, "400", "missing parameter (cookie)", nil)
 			return
 		}
+
 		Account := tools.GetAccountByCookie(cookie)
 		if Account != false {
-			Response := data.Response{
-				Status: "ok",
-				Code:   "200",
-				Data:   Account,
-			}
-			tools.ResponseF(w, Response)
+			tools.ResponseF(w, "200", "Successful", Account)
 		} else {
-			Response := data.Response{
-				Status: "cookie incorrect , not found",
-				Code:   "403",
-			}
-			tools.ResponseF(w, Response)
+			tools.ResponseF(w, "403", "cookie incorrect , not found", nil)
+
 		}
 
 	} else {
-		Response := data.Response{
-			Status: "method incorrect",
-			Code:   "400",
-		}
-		tools.ResponseF(w, Response)
+		tools.ResponseF(w, "400", "method incorrect", nil)
 	}
 }

@@ -1,101 +1,61 @@
 package handlers
 
 import (
-	"Hackathon/api/server/data"
 	"Hackathon/api/tools"
 	"net/http"
 )
 
 func GetProducts(w http.ResponseWriter, r *http.Request) {
 	tools.WriteLog("GetProducts called")
-	w.Header().Set("Content-Type", "application/json")
 	if r.Method == "GET" {
 		bde_id := r.FormValue("bdeId")
 		if bde_id == "" {
 			Products := tools.GetProducts()
 			if Products != false {
-				Response := data.Response{
-					Status: "request successful",
-					Code:   "200",
-					Data:   Products,
-				}
-				tools.ResponseF(w, Response)
+				tools.ResponseF(w, "200", "request successful", Products)
+
 			} else {
-				Response := data.Response{
-					Status: "error",
-					Code:   "400",
-				}
-				tools.ResponseF(w, Response)
+				tools.ResponseF(w, "400", "internal error please retry later", nil)
+
 			}
 		} else {
 			Products := tools.GetProductsByBDE(bde_id)
 			if Products != false {
-				Response := data.Response{
-					Status: "request successful",
-					Code:   "200",
-					Data:   Products,
-				}
-				tools.ResponseF(w, Response)
+				tools.ResponseF(w, "200", "request successful", Products)
+
 			} else {
-				Response := data.Response{
-					Status: "error",
-					Code:   "400",
-				}
-				tools.ResponseF(w, Response)
+				tools.ResponseF(w, "400", "internal error please retry later", nil)
 
 			}
 		}
 
 	} else {
-		Response := data.Response{
-			Status: "method incorrect",
-			Code:   "400",
-		}
-		tools.ResponseF(w, Response)
+		tools.ResponseF(w, "400", "method incorrect", nil)
 	}
 }
 
 func GetProduct(w http.ResponseWriter, r *http.Request) {
 	tools.WriteLog("GetProducts called")
-	w.Header().Set("Content-Type", "application/json")
 	if r.Method == "GET" {
 		ObjectId := r.FormValue("id")
 		if ObjectId != "" {
 			Product := tools.GetProductById(ObjectId)
 			if Product != false {
-				Response := data.Response{
-					Status: "request successful",
-					Code:   "200",
-					Data:   Product,
-				}
-				tools.ResponseF(w, Response)
+				tools.ResponseF(w, "200", "request successful", Product)
 			} else {
-				Response := data.Response{
-					Status: "error",
-					Code:   "400",
-				}
-				tools.ResponseF(w, Response)
+				tools.ResponseF(w, "400", "internal error please retry later", nil)
 			}
 		} else {
-			Response := data.Response{
-				Status: "missing parameter",
-				Code:   "400",
-			}
-			tools.ResponseF(w, Response)
+			tools.ResponseF(w, "400", "missing parameter(s)", nil)
 		}
 
 	} else {
-		Response := data.Response{
-			Status: "method incorrect",
-			Code:   "400",
-		}
-		tools.ResponseF(w, Response)
+		tools.ResponseF(w, "400", "method incorrect", nil)
 	}
 }
 
 func AddProduct(w http.ResponseWriter, r *http.Request) {
 	tools.WriteLog("AddInventory called")
-	w.Header().Set("Content-Type", "application/json")
 	if r.Method == "POST" {
 		name := r.FormValue("name")
 		description := r.FormValue("description")
@@ -103,59 +63,31 @@ func AddProduct(w http.ResponseWriter, r *http.Request) {
 		bde_id := r.FormValue("bdeId")
 		if name != "" && description != "" && price != "" && bde_id != "" {
 			tools.AddProduct(name, description, price, bde_id)
-			Response := data.Response{
-				Status: "request successful",
-				Code:   "200",
-			}
-			tools.ResponseF(w, Response)
+
+			tools.ResponseF(w, "200", "request successful", nil)
 		} else {
-			Response := data.Response{
-				Status: "missing parameter",
-				Code:   "400",
-			}
-			tools.ResponseF(w, Response)
+			tools.ResponseF(w, "400", "missing parameter(s)", nil)
 		}
 	} else {
-		Response := data.Response{
-			Status: "method incorrect",
-			Code:   "400",
-		}
-		tools.ResponseF(w, Response)
+		tools.ResponseF(w, "400", "method incorrect", nil)
 	}
 }
 
 func DeleteProduct(w http.ResponseWriter, r *http.Request) {
 	tools.WriteLog("DeleteProduct called")
-	w.Header().Set("Content-Type", "application/json")
 	if r.Method == "DELETE" {
 		ObjectId := r.FormValue("id")
 		if ObjectId != "" {
 			if tools.DeleteProduct(ObjectId) {
-				Response := data.Response{
-					Status: "Product deleted successfully",
-					Code:   "200",
-				}
-				tools.ResponseF(w, Response)
+				tools.ResponseF(w, "200", "request successful", nil)
 			} else {
-				Response := data.Response{
-					Status: "incorrect id",
-					Code:   "400",
-				}
-				tools.ResponseF(w, Response)
+				tools.ResponseF(w, "400", "incorrect id", nil)
 			}
 
 		} else {
-			Response := data.Response{
-				Status: "missing parameter",
-				Code:   "400",
-			}
-			tools.ResponseF(w, Response)
+			tools.ResponseF(w, "400", "missing parameter(s)", nil)
 		}
 	} else {
-		Response := data.Response{
-			Status: "method incorrect",
-			Code:   "400",
-		}
-		tools.ResponseF(w, Response)
+		tools.ResponseF(w, "400", "method incorrect", nil)
 	}
 }

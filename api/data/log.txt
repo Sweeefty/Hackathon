@@ -66,3 +66,8 @@ e2024-01-10 15:24:11 Error querying database tools/Inventory.go line 20
 2024-01-10 15:59:06 Connection called
 2024-01-10 15:59:21 GetProducts called
 2024-01-10 15:59:26 GetProducts called
+2024-01-10 16:31:00 Server started
+2024-01-10 16:31:07 GetBde called
+2024-01-10 16:33:42 Server started
+2024-01-10 16:33:48 404 called
+2024-01-10 16:34:03 GetBde called
