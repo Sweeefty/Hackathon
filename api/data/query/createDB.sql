@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS accounts (
     email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     role TEXT NOT NULL DEFAULT 'user',
-    SessionCookie TEXT,
     campus_id INTEGER NOT NULL,
     bde_id INTEGER,
     FOREIGN KEY (bde_id) REFERENCES bde(id),
@@ -55,5 +54,12 @@ CREATE TABLE IF NOT EXISTS inventory (
     products_id INTEGER NOT NULL,
     FOREIGN KEY (accounts_id) REFERENCES accounts(id),
     FOREIGN KEY (products_id) REFERENCES products(id)
+);
+
+CREATE TABLE IF NOT EXISTS session (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    accounts_id INTEGER NOT NULL,
+    SessionCookie TEXT NOT NULL,
+    FOREIGN KEY (accounts_id) REFERENCES accounts(id)
 );
 

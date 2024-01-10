@@ -27,9 +27,9 @@
             "method" : "GET",
             "Parameter(s)" : [
                 {
-                    "name" : "id",
+                    "name" : "cookie",
                     "required" : true,
-                    "comment" : "id of the user"
+                    "comment" : "cookie of the user"
                 }
             ]
         },

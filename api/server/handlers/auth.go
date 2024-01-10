@@ -1,8 +1,6 @@
 package handlers
 
 import (
-	"Hackathon/api/server/data"
-	"Hackathon/api/tools"
 	"fmt"
 	"net/http"
 )
@@ -12,11 +10,8 @@ func Authorization(next http.Handler) http.Handler {
 		authHeader := r.Header.Get("Authorization")
 
 		if authHeader == "" {
-			Response := data.Response{
-				Status: "",
-				Code:   "200",
-			}
-			tools.ResponseF(w, Response)
+			w.WriteHeader(http.StatusUnauthorized)
+			fmt.Fprintf(w, "Unauthorized: Missing Authorization header")
 			return
 		} else if authHeader != "test" {
 			w.WriteHeader(http.StatusUnauthorized)

@@ -15,9 +15,9 @@ func ConnectionHandler(w http.ResponseWriter, r *http.Request) {
 		password := r.FormValue("password")
 		// check if email and password are correct
 		Equal := tools.Connection(email, password)
-		if Equal == "ok" {
+		if Equal != "Error" {
 			// create a session cookie
-			Cookie := tools.CreateSessionCookie(email)
+			Cookie := tools.CreateSessionCookie(Equal)
 			Response := data.Response{
 				Status: "ok",
 				Code:   "200",

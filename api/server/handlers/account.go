@@ -11,8 +11,16 @@ func GetAccountInfo(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	// email and password
 	if r.Method == "GET" {
-		id := r.FormValue("id")
-		Account := tools.GetAccountById(id)
+		cookie := r.FormValue("cookie")
+		if cookie == "" {
+			Response := data.Response{
+				Status: "missing parameter (cookie)",
+				Code:   "400",
+			}
+			tools.ResponseF(w, Response)
+			return
+		}
+		Account := tools.GetAccountByCookie(cookie)
 		if Account != false {
 			Response := data.Response{
 				Status: "ok",
@@ -22,8 +30,8 @@ func GetAccountInfo(w http.ResponseWriter, r *http.Request) {
 			tools.ResponseF(w, Response)
 		} else {
 			Response := data.Response{
-				Status: "account not found",
-				Code:   "404",
+				Status: "cookie incorrect , not found",
+				Code:   "403",
 			}
 			tools.ResponseF(w, Response)
 		}
