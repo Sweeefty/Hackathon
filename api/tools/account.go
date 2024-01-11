@@ -5,11 +5,12 @@ import (
 	"database/sql"
 )
 
-func GetAccountById(id string) interface{} {
+func GetAccountById(id string) (data.Account, error) {
+	var Account data.Account
 	db, err := sql.Open("sqlite3", "./data/db.sqlite")
 	if err != nil {
 		WriteErr("Error opening database tools/Account.go line 11")
-		return false
+		return Account, err
 	}
 	defer db.Close()
 
@@ -18,14 +19,13 @@ func GetAccountById(id string) interface{} {
 	defer rows.Close()
 	if err != nil {
 		WriteErr("Error querying database tools/Account.go line 31")
-		return false
+		return Account, err
 	}
 	for rows.Next() {
-		var Account data.Account
 		rows.Scan(&Account.Id, &Account.Email, &Account.Role, &Account.Campus_id, &Account.Bde_id)
-		return Account
+		return Account, nil
 	}
-	return false
+	return Account, err
 }
 
 func GetAccountByCookie(cookie string) interface{} {

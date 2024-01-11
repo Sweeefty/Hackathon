@@ -11,6 +11,7 @@ import (
 
 func CreateDB() {
 	dbFile := "./data/db.sqlite"
+	dbAuthFile := "./data/dbAuth.sqlite"
 	// Check if the database file exists, if not, create it
 	if _, err := os.Stat(dbFile); os.IsNotExist(err) {
 		file, err := os.Create(dbFile)
@@ -58,5 +59,35 @@ func CreateDB() {
 			return
 		}
 	}
+	if _, err := os.Stat(dbAuthFile); os.IsNotExist(err) {
+		file, err := os.Create(dbAuthFile)
+		if err != nil {
+			fmt.Println("Error creating database file:", err)
+			return
+		}
+		defer file.Close()
+		// Open or create the SQLite database file
+		db, err := sql.Open("sqlite3", dbAuthFile)
+		if err != nil {
+			fmt.Println("Error opening database:", err)
+			return
+		}
+		defer db.Close()
 
+		// Read SQL query from a file
+		queryFile := "data/query/createAuthorization.sql"
+		queryBytes, err := ioutil.ReadFile(queryFile)
+		if err != nil {
+			fmt.Println("Error reading query file:", err)
+			return
+		}
+		query := string(queryBytes)
+
+		// Execute the SQL query to create a table
+		_, err = db.Exec(query)
+		if err != nil {
+			fmt.Println("Error executing query:", err)
+			return
+		}
+	}
 }

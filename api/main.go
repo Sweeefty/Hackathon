@@ -19,6 +19,8 @@ func main() {
 			tools.Help()
 		} else if os.Args[1] == "h" || os.Args[1] == "H" {
 			tools.Help()
+		} else if os.Args[1] == "t" || os.Args[1] == "T" { // Test
+			//test
 		} else {
 			tools.Help()
 		}

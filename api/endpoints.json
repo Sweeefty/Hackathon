@@ -136,6 +136,24 @@
                 }
                 
             ]
+        },
+        {
+            "name" : "Create Token",
+            "url" : "http://localhost:8080/createToken",
+            "method" : "POST",
+            "Parameter(s)" : [
+                {
+                    "name" : "email",
+                    "required" : true,
+                    "comment" : "The email a admin user , if the user is not admin, the request will be rejected"
+                },
+                {
+                    "name" : "password",
+                    "required" : true,
+                    "comment" : "The password of the admin user , if the user is not admin, the request will be rejected"
+                }
+                
+            ]
         }
     ]
 }
