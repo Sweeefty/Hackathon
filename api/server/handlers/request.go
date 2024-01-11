@@ -37,6 +37,10 @@ func GetRequest(w http.ResponseWriter, r *http.Request) {
 				tools.ResponseF(w, "400", "Incorrect id", nil)
 				return
 			}
+			if Request.Id == "" {
+				tools.ResponseF(w, "400", "Incorrect id", nil)
+				return
+			}
 			tools.ResponseF(w, "200", "success", Request)
 		} else {
 			tools.ResponseF(w, "400", "missing parameter(s)", nil)
@@ -69,6 +73,26 @@ func CreateRequest(w http.ResponseWriter, r *http.Request) {
 		} else {
 			tools.ResponseF(w, "400", "missing parameter(s)", nil)
 		}
+	} else {
+		tools.ResponseF(w, "400", "method incorrect", nil)
+	}
+}
+
+func UpdateRequest(w http.ResponseWriter, r *http.Request) {
+	tools.WriteLog("UpdateRequest called")
+
+	if r.Method == "PUT" {
+		request_id := r.FormValue("requestId")
+		if request_id == "" {
+			tools.ResponseF(w, "400", "missing parameter(s)", nil)
+			return
+		}
+		err := tools.ReadRequest(request_id)
+		if err != nil {
+			tools.ResponseF(w, "400", "bad idee provided", nil)
+			return
+		}
+		tools.ResponseF(w, "200", "success", nil)
 	} else {
 		tools.ResponseF(w, "400", "method incorrect", nil)
 	}

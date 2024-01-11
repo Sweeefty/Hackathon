@@ -69,6 +69,7 @@ CREATE TABLE IF NOT EXISTS request (
     campus_id INTEGER NOT NULL,
     comment TEXT NOT NULL,
     title TEXT NOT NULL,
+    read TEXT NOT NULL DEFAULT 'false',
     anonymous TEXT NOT NULL,
     FOREIGN KEY (accounts_id) REFERENCES accounts(id),
     FOREIGN KEY (campus_id) REFERENCES campus(id)

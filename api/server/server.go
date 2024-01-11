@@ -29,6 +29,7 @@ func StartApi() {
 	//Request
 	http.Handle("/getRequest", handlers.Authorization(http.HandlerFunc(handlers.GetRequest)))       //GET
 	http.Handle("/createRequest", handlers.Authorization(http.HandlerFunc(handlers.CreateRequest))) //POST
+	http.Handle("/updateRequest", handlers.Authorization(http.HandlerFunc(handlers.UpdateRequest))) //UPDATE
 
 	Port := "8080"                                    //We choose our port
 	fmt.Println("api started on port " + Port + " 🚀") //We print this when the server is online
