@@ -5,3 +5,8 @@ type Response struct {
 	Code   string
 	Data   interface{}
 }
+
+type ResponseDataLess struct {
+	Status string
+	Code   string
+}
