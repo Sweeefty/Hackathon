@@ -24,6 +24,9 @@ func StartApi() {
 	http.Handle("/deleteProduct", handlers.Authorization(http.HandlerFunc(handlers.DeleteProduct))) //DELETE
 	//Bde
 	http.Handle("/getBde", handlers.Authorization(http.HandlerFunc(handlers.GetBde))) //GET
+	//Events 
+	http.Handle("/getEvents", handlers.Authorization(http.HandlerFunc(handlers.GetEvents))) //GET
+	http.Handle("/addEvent", handlers.Authorization(http.HandlerFunc(handlers.AddEvent))) //POST
 
 	Port := "8080"                                    //We choose our port
 	fmt.Println("api started on port " + Port + " 🚀") //We print this when the server is online
