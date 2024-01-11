@@ -63,3 +63,14 @@ CREATE TABLE IF NOT EXISTS session (
     FOREIGN KEY (accounts_id) REFERENCES accounts(id)
 );
 
+CREATE TABLE IF NOT EXISTS request (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    accounts_id INTEGER NOT NULL,
+    campus_id INTEGER NOT NULL,
+    comment TEXT NOT NULL,
+    title TEXT NOT NULL,
+    read TEXT NOT NULL DEFAULT 'false',
+    anonymous TEXT NOT NULL,
+    FOREIGN KEY (accounts_id) REFERENCES accounts(id),
+    FOREIGN KEY (campus_id) REFERENCES campus(id)
+);

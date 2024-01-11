@@ -154,6 +154,57 @@
                 }
                 
             ]
+        },
+        {
+            "name" : "Get Request",
+            "url" : "http://localhost:8080/getRequest",
+            "method" : "GET",
+            "Parameter(s)" : [
+                {
+                    "name" : "campusId",
+                    "required" : true,
+                    "comment" : "Return a list of request for a specific campus (choose nly one of the 3 parameters)"
+                },
+                {
+                    "name" : "bdeId",
+                    "required" : true,
+                    "comment" : "Return a list of request for a specific bde (choose nly one of the 3 parameters)"
+                },
+                {
+                    "name" : "requestId",
+                    "required" : true,
+                    "comment" : "Return a request for a specific id (choose nly one of the 3 parameters)"
+                }
+                
+            ]
+        },
+        {
+            "name" : "Get Request",
+            "url" : "http://localhost:8080/createRequest",
+            "method" : "POST",
+            "Parameter(s)" : [
+                {
+                    "name" : "bdeId",
+                    "required" : true,
+                    "comment" : ""
+                },
+                {
+                    "name" : "comment",
+                    "required" : true,
+                    "comment" : "Content of the request"
+                },
+                {
+                    "name" : "title",
+                    "required" : true,
+                    "comment" : "Title of the request"
+                },
+                {
+                    "name" : "anonymous",
+                    "required" : true,
+                    "comment" : "Create a request anonymously or not"
+                }
+                
+            ]
         }
     ]
 }
