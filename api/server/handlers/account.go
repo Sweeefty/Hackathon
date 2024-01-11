@@ -6,7 +6,7 @@ import (
 )
 
 func GetAccountInfo(w http.ResponseWriter, r *http.Request) {
-	tools.WriteLog("Connection called")
+	tools.WriteLog("GetAccountInfo called")
 	// email and password
 	if r.Method == "GET" {
 		cookie := r.FormValue("cookie")

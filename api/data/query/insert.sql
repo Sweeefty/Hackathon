@@ -32,3 +32,8 @@ INSERT INTO inventory (accounts_id, products_id) VALUES (3, 1);
 INSERT INTO session (accounts_id, SessionCookie) VALUES (1, 'gurvan');
 INSERT INTO session (accounts_id, SessionCookie) VALUES (2, 'lenny');
 INSERT INTO session (accounts_id, SessionCookie) VALUES (3, 'rayen');
+
+-- Insert sample request
+
+INSERT INTO request (accounts_id, campus_id, comment, title , anonymous) VALUES (1, 1, "Je veux un vps par étudiant", "VPS" ,"false");
+INSERT INTO request (accounts_id, campus_id, comment, title ,  anonymous) VALUES (3, 1, "*******", "***" ,"true");

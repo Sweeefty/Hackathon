@@ -53,3 +53,25 @@ func GetBdeById(id interface{}) interface{} {
 	}
 	return false
 }
+
+func GetCampusIdByBdeId(id string) (string, error) {
+	var idCampus string
+	db, err := sql.Open("sqlite3", "./data/db.sqlite")
+	if err != nil {
+		WriteErr("Error opening database tools/request.go line 11")
+		return idCampus, err
+	}
+	defer db.Close()
+
+	rows, err := db.Query("SELECT campus_id FROM bde WHERE id = ?;", id)
+	defer rows.Close()
+	if err != nil {
+		WriteErr("Error querying database tools/request.go line 31")
+		return idCampus, err
+	}
+	for rows.Next() {
+		rows.Scan(&idCampus)
+		return idCampus, nil
+	}
+	return idCampus, err
+}
