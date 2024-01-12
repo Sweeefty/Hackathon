@@ -40,11 +40,11 @@ export default function RouletteWheel() {
               mustStartSpinning={mustSpin}
               prizeNumber={prizeNumber}
               data={data}
-              outerBorderColor={["#666666"]}
-              outerBorderWidth={[10]}
-              innerBorderColor={["#666666"]}
-              radiusLineColor={["#666666"]}
-              radiusLineWidth={[1]}
+              outerBorderColor={"#666666"}
+              outerBorderWidth={10}
+              innerBorderColor={"#666666"}
+              radiusLineColor={"#666666"}
+              radiusLineWidth={1}
               fontSize={15}
               textColors={["#ffffff"]}
               backgroundColors={["#70DECF", "#70DECF"]}
