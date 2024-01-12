@@ -1,4 +1,3 @@
-// Layout.tsx
 import { ChakraProvider, Box, Flex, Heading, Button, Spacer } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
@@ -17,8 +16,8 @@ export default function Header() {
         <Button as={NextLink} href="/Roue" variant="ghost" color="#666666" mr={2}>
           Roue
         </Button>
-        <Button as={NextLink} href="/Calendrier" variant="ghost" color="#666666" mr={2}>
-          Calendrier
+        <Button as={NextLink} href="/Apropos" variant="ghost" color="#666666" mr={2}>
+          À propos
         </Button>
         <Spacer />
         <Button as={NextLink} href="/" variant="ghost" color="#666666">
