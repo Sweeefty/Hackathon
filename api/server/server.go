@@ -26,16 +26,13 @@ func StartApi() {
 	http.Handle("/deleteProduct", handlers.Authorization(http.HandlerFunc(handlers.DeleteProduct))) //DELETE
 	//Bde
 	http.Handle("/getBde", handlers.Authorization(http.HandlerFunc(handlers.GetBde))) //GET
-<<<<<<< HEAD
-	//Events 
+	//Events
 	http.Handle("/getEvents", handlers.Authorization(http.HandlerFunc(handlers.GetEvents))) //GET
-	http.Handle("/addEvent", handlers.Authorization(http.HandlerFunc(handlers.AddEvent))) //POST
-=======
+	http.Handle("/addEvent", handlers.Authorization(http.HandlerFunc(handlers.AddEvent)))   //POST
 	//Request
 	http.Handle("/getRequest", handlers.Authorization(http.HandlerFunc(handlers.GetRequest)))       //GET
 	http.Handle("/createRequest", handlers.Authorization(http.HandlerFunc(handlers.CreateRequest))) //POST
 	http.Handle("/updateRequest", handlers.Authorization(http.HandlerFunc(handlers.UpdateRequest))) //UPDATE
->>>>>>> c3b6a7ffe1c16de943a80b6b938b766eb6ac2f80
 
 	Port := "8080"                                    //We choose our port
 	fmt.Println("api started on port " + Port + " 🚀") //We print this when the server is online
