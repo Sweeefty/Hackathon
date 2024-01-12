@@ -5,7 +5,7 @@ import { Box, Flex, Heading, Text, SimpleGrid } from "@chakra-ui/react";
 export default function Accueil() {
   return (
     <Layout>
-      <Flex direction="column" align="center" justify="flex-start" h="100%">
+      <Flex direction="column" align="center" justify="flex-start" h="100%" bg="#1b202b">
         <Heading as="h1" size="xl" mt={4} mb={6}>
           BDE de : Nantes
         </Heading>
