@@ -5,12 +5,12 @@ import { Box, Button, Center, Flex, Heading } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Wheel } from "react-custom-roulette";
 
-interface Option {  /* interface pour typer les options de la roue */
+interface Tondeuse {  /* interface pour typer les options de la roue */
   option: string;
 }
 
 /*  creation de ce tableau pour creer les possibilités de la roue
- */const martin: Option[] = [
+ */const martin: Tondeuse[] = [
   { option: "Place Warehouse" },
   { option: "Pain au chocolat" },
   { option: "Place WEI Gratuite" },
