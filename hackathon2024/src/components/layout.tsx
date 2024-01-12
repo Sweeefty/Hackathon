@@ -10,17 +10,17 @@ export default function Header() {
         </Heading>
       </Box>
       <Flex align="center">
-        <Button as={NextLink} href="/Accueil" variant="ghost" color="#666666" mr={2}>
+        <Button as={NextLink} href="/Accueil" variant="ghost" bg="#666666" mr={10}>
           Accueil
         </Button>
-        <Button as={NextLink} href="/Roue" variant="ghost" color="#666666" mr={2}>
+        <Button as={NextLink} href="/Roue" variant="ghost" bg="#666666" mr={10}>
           Roue
         </Button>
-        <Button as={NextLink} href="/Apropos" variant="ghost" color="#666666" mr={2}>
+        <Button as={NextLink} href="/Apropos" variant="ghost" bg="#666666" mr={10}>
           À propos
         </Button>
         <Spacer />
-        <Button as={NextLink} href="/" variant="ghost" color="#666666">
+        <Button as={NextLink} href="/" variant="ghost" bg="#666666">
           Déconnexion
         </Button>
       </Flex>

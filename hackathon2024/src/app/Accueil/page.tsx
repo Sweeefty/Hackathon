@@ -32,10 +32,10 @@ export default function Accueil() {
         </Flex>
 
         <Box mt={8} w="100%" textAlign="center">
-          <Heading as="h2" size="lg" mb={4}>
+          <Heading as="h2" size="lg" mb={40}>
             Prochains événements à venir
           </Heading>
-          <SimpleGrid columns={[1, 2, 3]} spacing={4} mx="auto" maxW="800px">
+          <SimpleGrid columns={[1, 2, 3]} spacing={16} mx="auto" maxW="800px">
             <Box bg="#70DECF" p={4} borderRadius={8} color="white">
               <Text fontWeight="bold">WareHouse</Text>
               <Text>Date : 01/04/2024</Text>

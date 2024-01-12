@@ -1,7 +1,13 @@
-import { Button, ChakraProvider, Center, Box, Flex, Heading, Input, Stack } from '@chakra-ui/react'
+'use client'
+import { Button, ChakraProvider, Center, Box, Flex, Heading, Input, Stack, InputGroup, InputRightElement } from '@chakra-ui/react'
 import Image from 'next/image'
+import { useState } from 'react'
+import NextLink from 'next/link';
 
 export default function Home() {
+  
+    const [show, setShow] = useState(false)
+    const handleClick = () => setShow(!show)
   return (
     <ChakraProvider>
       <Flex
@@ -20,12 +26,25 @@ export default function Home() {
         </Heading>
         <Stack spacing={16}>
           <Stack spacing={6}>
-            <Input placeholder='Email' size='sm' bg='#666666' />
-            <Input placeholder='Mot de Passe' size='sm' bg='#666666' />
+            <Input placeholder='Enter Email' bg='#666666' pr='4.5rem' />
+            <InputGroup size='md'>
+            <Input
+              bg='#666666'
+              pr='4.5rem'
+              type={show ? 'text' : 'password'}
+              placeholder='Enter password'
+            />
+            <InputRightElement width='4.5rem'>
+              <Button h='1.75rem' size='sm' onClick={handleClick}>
+                {show ? 'Hide' : 'Show'}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
           </Stack>
-          <Button bg='#666666' size="md">
-            Connexion
-          </Button>
+          <Button as={NextLink} href="/Accueil" bg="#666666" >
+          Connexion
+        </Button>
+
         </Stack>
       </Box>
     </Flex>
