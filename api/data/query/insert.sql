@@ -2,8 +2,8 @@
 
 -- Insert sample users
 INSERT INTO accounts (email, password , role ,  campus_id) VALUES ('gurvan', 'gurvan' , 'admin', 1 );
-INSERT INTO accounts (email, password , role , bde_id , campus_id) VALUES ('lenny', 'lenny' , 'admin' , 1);
-INSERT INTO accounts (email, password , role ,  campus_id) VALUES ('rayen', 'rayen' , 'admin', 1 , 1);
+INSERT INTO accounts (email, password , role , campus_id) VALUES ('lenny', 'lenny' , 'admin' , 1);
+INSERT INTO accounts (email, password , role , bde_id , campus_id) VALUES ('rayen', 'rayen' , 'admin', 1 , 1);
 
 -- Insert sample campus
 INSERT INTO campus (name) VALUES ('Nantes');
@@ -28,3 +28,8 @@ INSERT INTO products (name, description, price , bde_id) VALUES ('Pain au chocol
 INSERT INTO inventory (accounts_id, products_id) VALUES (1, 1);
 INSERT INTO inventory (accounts_id, products_id) VALUES (2, 1);
 INSERT INTO inventory (accounts_id, products_id) VALUES (3, 1);
+
+-- Insert sample session
+INSERT INTO session (accounts_id, SessionCookie) VALUES (1, 'gurvan');
+INSERT INTO session (accounts_id, SessionCookie) VALUES (2, 'lenny');
+INSERT INTO session (accounts_id, SessionCookie) VALUES (3, 'rayen');

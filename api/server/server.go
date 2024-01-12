@@ -9,6 +9,8 @@ import (
 func StartApi() {
 	//404
 	http.HandleFunc("/", handlers.Error404) //GET
+	//Token
+	http.HandleFunc("/createToken", handlers.SetAuthorization) //POST
 	//doc
 	http.Handle("/api", http.HandlerFunc(handlers.Doc)) //GET
 	//Accounts

@@ -27,9 +27,9 @@
             "method" : "GET",
             "Parameter(s)" : [
                 {
-                    "name" : "id",
+                    "name" : "cookie",
                     "required" : true,
-                    "comment" : "id of the user"
+                    "comment" : "cookie of the user"
                 }
             ]
         },
@@ -133,6 +133,24 @@
                     "name" : "id",
                     "required" : false,
                     "comment" : "The id of the BDE (optional)"
+                }
+                
+            ]
+        },
+        {
+            "name" : "Create Token",
+            "url" : "http://localhost:8080/createToken",
+            "method" : "POST",
+            "Parameter(s)" : [
+                {
+                    "name" : "email",
+                    "required" : true,
+                    "comment" : "The email a admin user , if the user is not admin, the request will be rejected"
+                },
+                {
+                    "name" : "password",
+                    "required" : true,
+                    "comment" : "The password of the admin user , if the user is not admin, the request will be rejected"
                 }
                 
             ]
